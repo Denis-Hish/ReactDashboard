@@ -68,8 +68,8 @@ const BigChartBox = () => {
                      bottom: 0,
                   }}
                >
-                  <XAxis dataKey='name' />
-                  <YAxis />
+                  {/* <XAxis dataKey='name' /> */}
+                  {/* <YAxis /> */}
                   <Tooltip />
                   <Area
                      type='monotone'
