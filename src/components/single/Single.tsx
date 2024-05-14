@@ -26,6 +26,10 @@ type Props = {
 };
 
 const Single = (props: Props) => {
+   const handleUpdate = () => {
+      alert('ID: ' + props.id + ' - has been updated!');
+   };
+
    return (
       <div className='single'>
          <div className='view'>
@@ -33,7 +37,11 @@ const Single = (props: Props) => {
                <div className='top-info'>
                   {props.img && <img src={props.img} alt='User logo' />}
                   <h1>{props.title}</h1>
-                  <Button variant='contained' color='error'>
+                  <Button
+                     variant='contained'
+                     color='error'
+                     onClick={handleUpdate}
+                  >
                      Update
                   </Button>
                </div>
