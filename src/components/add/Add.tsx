@@ -3,6 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import './add.scss';
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 type Props = {
    slug: string;
@@ -11,11 +12,39 @@ type Props = {
 };
 
 const Add = (props: Props) => {
+   const queryClient = useQueryClient();
+
+   const mutation = useMutation({
+      mutationFn: () => {
+         return fetch(`http://localhost:8800/api/${props.slug}s`, {
+            method: 'POST',
+            headers: {
+               Accept: 'application/json',
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+               id: 111,
+               img: '',
+               firstName: 'Anakin',
+               lastName: 'Skywalker',
+               email: 'anakin-jedy@tatuin.com',
+               phone: '123 456 789',
+               createdAt: '01.02.2023',
+               varifiels: true,
+            }),
+         });
+      },
+      onSuccess: () => {
+         queryClient.invalidateQueries([`all${props.slug}s`]);
+      },
+   });
+
    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      // add new item
-      // axios.post(`/api/${slug}s`, {})
-      alert('Added new ' + props.slug);
+      console.log('Added new ' + props.slug);
+      // add new item (user / product)
+      mutation.mutate();
+      props.setOpen(false);
    };
 
    return (

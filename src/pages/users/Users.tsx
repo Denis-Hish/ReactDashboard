@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { GridColDef } from '@mui/x-data-grid';
 import DataTable from '../../components/dataTable/DataTable';
-import { userRows } from '../../data';
 import Add from '../../components/add/Add';
 import Button from '@mui/material/Button';
 import './users.scss';
@@ -54,7 +53,7 @@ const Users = () => {
    const [open, setOpen] = useState(false);
 
    const { isLoading, data } = useQuery({
-      queryKey: ['repoData'],
+      queryKey: ['allusers'],
       queryFn: () =>
          fetch('http://localhost:8800/api/users').then((res) => res.json()),
    });
