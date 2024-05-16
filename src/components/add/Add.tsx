@@ -35,7 +35,7 @@ const Add = (props: Props) => {
          });
       },
       onSuccess: () => {
-         queryClient.invalidateQueries([`all${props.slug}s`]);
+         queryClient.invalidateQueries({ queryKey: [`all${props.slug}s`] });
       },
    });
 

@@ -1,11 +1,4 @@
-import {
-   Area,
-   AreaChart,
-   ResponsiveContainer,
-   Tooltip,
-   XAxis,
-   YAxis,
-} from 'recharts';
+import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 import './bigChartBox.scss';
 
 const data = [
